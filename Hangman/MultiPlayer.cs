@@ -21,6 +21,8 @@ namespace Hangman
         private char[] chars;
         private char[] guessChars;
 
+        List<char> usedList = new List<char>();
+
         public MultiPlayer()
         {
             this.player1 = "Player 1";
@@ -45,6 +47,7 @@ namespace Hangman
         {
             this.tries = 7;
             this.guessWord = "";
+            usedList.Clear();
         }
         public void initializeScore()
         {
@@ -117,7 +120,12 @@ namespace Hangman
             Console.WriteLine();
             Console.WriteLine("Length: {0}", this.getWordLength());
             Console.WriteLine();
-            Console.WriteLine("Used: {0}", this.tries);
+            Console.Write("Used: ");
+            for (int i = 0; i < usedList.Count; i++)
+            {
+                Console.Write(usedList[i]);
+            }
+            Console.WriteLine();
         }
 
         public void randomGenerator()
@@ -136,6 +144,11 @@ namespace Hangman
                 {
                     guessChars[i] = s;
                     flag = 1;
+                    //usedList.Add(chars[i]);
+                }
+                if (!usedList.Contains(s))
+                {
+                    usedList.Add(s);
                 }
                 guessWord = new string(guessChars);
             }
@@ -204,7 +217,7 @@ namespace Hangman
                 Console.WriteLine(player2 + " Win");
             else
                 Console.WriteLine("Draw");
-            Console.WriteLine();
+
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
@@ -212,7 +225,12 @@ namespace Hangman
 
         public void play()
         {
+            Console.WriteLine();
+            Console.WriteLine();
             Console.WriteLine(guessWord);
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.Write("Guess a Word: ");
             char s = Char.Parse(Console.ReadLine());
             searchString(s);
         }
