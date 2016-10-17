@@ -10,12 +10,12 @@ namespace Hangman
     {
         private string player1;
         private string player2;
-        private int setter = 0;
+        private int setter;
         private int playerOneScore;
         private int playerTwoScore;
         private int tries;
         private int rounds;
-        private String word;
+        private string word;
         private string guessWord;
 
         private char[] chars;
@@ -30,6 +30,7 @@ namespace Hangman
             this.playerOneScore = 0;
             this.playerTwoScore = 0;
             this.tries = 7;
+            this.setter = 0;
             this.guessWord = "";
         }
 
@@ -40,6 +41,7 @@ namespace Hangman
             this.playerOneScore = 0;
             this.playerTwoScore = 0;
             this.tries = 7;
+            this.setter = 0;
             this.guessWord = "";
         }
 
@@ -49,7 +51,7 @@ namespace Hangman
             this.guessWord = "";
             usedList.Clear();
         }
-        public void initializeScore()
+        public void initialScore()
         {
             this.playerOneScore = 0;
             this.playerTwoScore = 0;
@@ -237,7 +239,7 @@ namespace Hangman
 
         public void StartGame()
         {
-            initializeScore();
+            initialScore();
             printGameName();
 
             Console.WriteLine();
@@ -276,6 +278,7 @@ namespace Hangman
                 else if (tries == 0 && setter == 0 || (res && setter == 0))
                     setter = 1;
             }
+
             if (j == rounds)
             {
                 showFinalResult();
