@@ -13,7 +13,7 @@ namespace Hangman
             string s = "Welcome to Hangman Game !!!";
             string underline = "------------------------------------";
             Console.Clear();
-
+            Console.WriteLine();
             Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (s.Length / 2)) + "}", s));
             Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (underline.Length / 2)) + "}", underline));
             Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (underline.Length / 2)) + "}", underline));
@@ -21,7 +21,7 @@ namespace Hangman
             Console.WriteLine();
 
             //Select the how many Player
-            
+
             Console.WriteLine("1. Single Player");
             Console.WriteLine("2. Multi Player");
             Console.WriteLine();
@@ -37,43 +37,46 @@ namespace Hangman
                 string str = "Hangman Game !!!";
                 string under = "------------------------------------";
                 Console.Clear();
-            
+                Console.WriteLine();
                 Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
                 Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (underline.Length / 2)) + "}", under));
                 Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (underline.Length / 2)) + "}", under));
 
             }
-            else if(choose == "2")
+            else if (choose == "2")
             {
-                string player1,player2;
+                string player1, player2;
                 //Multiplayer Game
                 Console.Clear();
+
                 string str = "Hangman Game Multiplayer!!!";
                 string under = "------------------------------------";
                 Console.Clear();
-
+                Console.WriteLine();
                 Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
                 Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (underline.Length / 2)) + "}", under));
                 Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (underline.Length / 2)) + "}", under));
 
-                Console.Write("Enter Player 1 Name: ");
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.Write("Set Player 1 Name: ");
                 player1 = Console.ReadLine();
-                Console.Write("Enter Player 2 Name: ");
+
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.Write("Set Player 2 Name: ");
                 player2 = Console.ReadLine();
+
                 Console.Clear();
 
-                MultiPlayer multiPlayer = new MultiPlayer(player1,player2);
+                MultiPlayer multiPlayer = new MultiPlayer(player1, player2);
                 multiPlayer.StartGame();
-
             }
+
             else
             {
-   
                 MultiPlayer multiPlayer = new MultiPlayer();
-                for (int i = 0; i < 100; i++)
-                {
-                    multiPlayer.StartGame();
-                }
+                multiPlayer.StartGame();
             }
         }
     }
