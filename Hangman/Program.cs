@@ -33,6 +33,7 @@ namespace Hangman
 
             if (choose == "1")
             {
+                string player;
                 //Single Player Game
                 string str = "Hangman Game !!!";
                 string under = "------------------------------------";
@@ -41,6 +42,14 @@ namespace Hangman
                 Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
                 Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (underline.Length / 2)) + "}", under));
                 Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (underline.Length / 2)) + "}", under));
+
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.Write("Set Player Name: ");
+                player = Console.ReadLine();
+
+                SinglePlayer singlePlayer = new SinglePlayer(player);
+                singlePlayer.StartGame();
 
             }
             else if (choose == "2")
