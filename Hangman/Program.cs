@@ -81,12 +81,6 @@ namespace Hangman
                 MultiPlayer multiPlayer = new MultiPlayer(player1, player2);
                 multiPlayer.StartGame();
             }
-
-            else
-            {
-                MultiPlayer multiPlayer = new MultiPlayer();
-                multiPlayer.StartGame();
-            }
         }
     }
 }

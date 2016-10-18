@@ -79,13 +79,48 @@ namespace Hangman
             Console.WriteLine();
             Console.Write("Enter a word : ");
             word = Console.ReadLine();
+            List<int> randomList = new List<int>();
+            int n = 0;
+
+            int len = word.Length;
+
+            for (int i = 0; i < len / 3; i++)
+            {
+                Random index = new Random();
+                n = index.Next() % len;
+
+                if (!randomList.Contains(n) && !randomList.Contains(n - 1) && !randomList.Contains(n + 1))
+                {
+                    randomList.Add(n);
+
+                }
+            }
             for (int i = 0; i < word.Length; i++)
             {
                 guessWord += "-";
+
             }
             chars = word.ToCharArray();
             guessChars = guessWord.ToCharArray();
+
+            Console.WriteLine(word.Length);
+            for (int i = 0; i < word.Length; i++)
+            {
+                if (randomList.Contains(i))
+                {
+                    usedList.Add(chars[i]);
+                    guessChars[i] = chars[i];
+                    for (int j = 0; j < getWordLength(); j++)
+                    {
+                        if (chars[j] == chars[i])
+                            guessChars[j] = chars[i];
+                    }
+                }
+
+            }
+
         }
+    
 
         public void PrintQuestion()
         {
@@ -229,6 +264,7 @@ namespace Hangman
         {
             Console.WriteLine();
             Console.WriteLine();
+            guessWord = new string(guessChars);
             Console.WriteLine(guessWord);
             Console.WriteLine();
             Console.WriteLine();

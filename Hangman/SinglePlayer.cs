@@ -93,24 +93,31 @@ namespace Hangman
                 if (!randomList.Contains(n) && !randomList.Contains(n-1) && !randomList.Contains(n+1))
                 {
                     randomList.Add(n);
+
                 }
             }
              
-            Console.WriteLine();
             word = str;
             for (int i = 0; i < word.Length; i++)
             {
                 guessWord += "-";
+                
             }
             chars = word.ToCharArray();
             guessChars = guessWord.ToCharArray();
 
+            Console.WriteLine(word.Length);
             for (int i = 0; i < word.Length; i++)
             {
                 if (randomList.Contains(i))
                 {
-                    Console.WriteLine(i);
-                    guessChars[i] = word[i];
+                    usedList.Add(chars[i]);
+                    guessChars[i] = chars[i];
+                    for (int j = 0; j < getWordLength(); j++)
+                    {
+                        if (chars[j] == chars[i])
+                            guessChars[j] = chars[i];
+                    }
                 }
                    
             }
@@ -119,6 +126,8 @@ namespace Hangman
 
         public void gameInfo()
         {
+            Console.WriteLine();
+            Console.WriteLine("Points: {0}", this.playerScore);
             Console.WriteLine();
             Console.WriteLine("Tries: {0}", this.tries);
             Console.WriteLine();
@@ -199,9 +208,6 @@ namespace Hangman
             Console.WriteLine();
             Console.WriteLine();
 
-            Console.Write("Results : ");
-            Console.WriteLine("Draw");
-
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
@@ -211,6 +217,7 @@ namespace Hangman
         {
             Console.WriteLine();
             Console.WriteLine();
+            guessWord = new string(guessChars);
             Console.WriteLine(guessWord);
             Console.WriteLine();
             Console.WriteLine();
