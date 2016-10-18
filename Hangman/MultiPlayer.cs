@@ -181,7 +181,7 @@ namespace Hangman
                 {
                     guessChars[i] = s;
                     flag = 1;
-                    //usedList.Add(chars[i]);
+                    
                 }
                 if (!usedList.Contains(s))
                 {
@@ -268,7 +268,7 @@ namespace Hangman
             Console.WriteLine(guessWord);
             Console.WriteLine();
             Console.WriteLine();
-            Console.Write("Guess a Word: ");
+            Console.Write("Pick a Letter: ");
             char s = Char.Parse(Console.ReadLine());
             searchString(s);
         }
